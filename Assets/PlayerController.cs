@@ -6,26 +6,133 @@ public class PlayerController : MonoBehaviour
 {
     // Start is called before the first frame update
     private Rigidbody2D body;
-    public float hSpeed;
-    public float vSpeed;
+    public float moveSpeed;
+    //public float vSpeed;
     private float hMove;
     private float vMove;
-    
+    public GameObject sword;
+    private float swordTimer;
+    private Vector2 movementDirection;
+    public GameObject childSprite;
+    public GameObject attackZone;
+    private string direction;
+    private string prevDirection;
+    private float rotAngle;
+
+
     void Start()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
+        swordTimer = 0;
+        direction = "r";
+        prevDirection = "r";
+        rotAngle = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-        hMove = Input.GetAxis("Horizontal");
-        vMove = Input.GetAxis("Vertical");
-        if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        body.velocity = new Vector2(hMove * hSpeed, body.velocity.y);
-        if (vMove < 0) gameObject.GetComponent<SpriteRenderer>().flipY = true;
-        else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;
-        body.velocity = new Vector2(body.velocity.x, vMove * vSpeed);
+        Inputs();
+        /*if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;*/
+        body.velocity = new Vector2(hMove * moveSpeed, body.velocity.y);
+        /*if (vMove < 0) gameObject.GetComponent<SpriteRenderer>().flipY = true;
+        else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;*/
+        body.velocity = new Vector2(body.velocity.x, vMove * moveSpeed);
+
+        
     }
+
+    private void FixedUpdate()
+    {
+        Movement();
+        if (swordTimer > 0) { swordTimer--; }
+    }
+
+    void Inputs()
+    {
+        hMove = Input.GetAxisRaw("Horizontal");
+        //if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
+        //else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;
+        /*if (hMove < 0) childSprite.GetComponent<SpriteRenderer>().flipY = true;
+        else if (hMove > 0) childSprite.GetComponent<SpriteRenderer>().flipY = false;*/
+
+        vMove = Input.GetAxisRaw("Vertical");
+        //if (vMove < 0) gameObject.GetComponent<SpriteRenderer>().flipY = true;
+        //else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;
+        /*if (vMove < 0) childSprite.GetComponent<SpriteRenderer>().flipX = true;
+        else if (vMove > 0) childSprite.GetComponent<SpriteRenderer>().flipX = false;*/
+
+        movementDirection = new Vector2(hMove, vMove).normalized;//''
+
+        if(direction == "r" && hMove != 1) 
+        {
+            
+            if(vMove < 0) { direction="d";}
+            else if (vMove > 0) { direction="u";}
+            else if (hMove < 0) { direction = "l"; }
+        }
+        else if(direction == "l" && hMove != -1) 
+        {
+            if(vMove > 0) { direction="u";}
+            else if(vMove < 0) { direction="d";}
+            else if (hMove > 0) { direction = "r"; }
+        }
+        else if(direction == "u" && vMove != 1)
+        {
+            if (hMove > 0) { direction = "r";}
+            else if(hMove < 0) { direction="l";}
+            else if (vMove < 0) { direction = "d";}
+            
+        }
+        else if (direction == "d" && vMove != -1) 
+        {
+            if(hMove > 0) { direction="r";}
+            else if (hMove < 0) { direction="l";}
+            else if (vMove > 0) { direction = "u";}
+        }
+        if(direction == "r") { rotAngle = 0; }
+        else if(direction == "l") {  rotAngle = 180; }
+        else if(direction == "u") { rotAngle = 90;  }
+        else { rotAngle = 270; }
+
+        if (Input.GetAxis("Fire1") > 0 && swordTimer == 0)
+        {
+            Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0,0,rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
+            swordTimer = 20;
+        }
+        //else if (swordTimer > 0) { swordTimer--; }
+    }
+
+    void Movement()
+    {
+        body.velocity = new Vector2(movementDirection.x * moveSpeed, movementDirection.y * moveSpeed);
+        if(direction != prevDirection)
+        {
+            if(direction == "r")
+            {
+                transform.eulerAngles = Vector3.forward * 0;
+            }
+            else if (direction == "l") 
+            {
+                transform.eulerAngles = Vector3.forward * 180;
+            }
+            else if (direction == "d")
+            {
+                transform.eulerAngles = Vector3.forward * 270;
+            }
+            else
+            {
+                transform.eulerAngles = Vector3.forward * 90;
+            }
+            prevDirection = direction;
+        }
+    }
+    /* private void RotateTowardsInput()
+     {
+         if(hMove != 0 || vMove != 0) 
+         {
+             Quaternion targetRotation = Quaternion.LookRotation(transform.forward, );
+         }
+     }*/
 }
