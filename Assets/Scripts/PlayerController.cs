@@ -58,16 +58,8 @@ public class PlayerController : MonoBehaviour
     void Inputs()
     {
         hMove = Input.GetAxisRaw("Horizontal");
-        //if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
-        //else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;
-        /*if (hMove < 0) childSprite.GetComponent<SpriteRenderer>().flipY = true;
-        else if (hMove > 0) childSprite.GetComponent<SpriteRenderer>().flipY = false;*/
 
         vMove = Input.GetAxisRaw("Vertical");
-        //if (vMove < 0) gameObject.GetComponent<SpriteRenderer>().flipY = true;
-        //else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;
-        /*if (vMove < 0) childSprite.GetComponent<SpriteRenderer>().flipX = true;
-        else if (vMove > 0) childSprite.GetComponent<SpriteRenderer>().flipX = false;*/
 
         movementDirection = new Vector2(hMove, vMove).normalized;//''
 
@@ -107,7 +99,6 @@ public class PlayerController : MonoBehaviour
             Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0,0,rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
             swordTimer = 20;
         }
-        //else if (swordTimer > 0) { swordTimer--; }
     }
 
     void Movement()
@@ -134,23 +125,16 @@ public class PlayerController : MonoBehaviour
             prevDirection = direction;
         }
     }
-    /* private void RotateTowardsInput()
-     {
-         if(hMove != 0 || vMove != 0) 
-         {
-             Quaternion targetRotation = Quaternion.LookRotation(transform.forward, );
-         }
-     }*/
 
-       private void OnCollisionEnter2D(Collision2D collision)
+       private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "BasicEnemy")
+        if (collision.gameObject.tag == "basicEnemy")
         {
             // Destroy self
-            //this.decreaseHealth();
-        //}
-         //if (this.health <= 0){
-            Destroy (collision.gameObject);
+            decreaseHealth();
+        }
+         if (health <= 0){
+           Destroy (gameObject);
         }
     }
 }

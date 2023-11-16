@@ -31,12 +31,12 @@ public class EnemyController : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "teehee")
+        if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "playerAttack")
         {
             // Destroy self
-            //this.decreaseHealth();
-        //}
-         //if (this.health <= 0){
+            decreaseHealth();
+        }
+         if (health <= 0){
             Destroy (gameObject);
         }
     }
