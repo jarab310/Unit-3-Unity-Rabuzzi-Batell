@@ -19,6 +19,12 @@ public class PlayerController : MonoBehaviour
     private string prevDirection;
     private float rotAngle;
 
+    public int health = 2;
+    public void decreaseHealth()
+    {
+        health -= 1;
+    }
+    
 
     void Start()
     {
@@ -135,4 +141,16 @@ public class PlayerController : MonoBehaviour
              Quaternion targetRotation = Quaternion.LookRotation(transform.forward, );
          }
      }*/
+
+       private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "BasicEnemy")
+        {
+            // Destroy self
+            //this.decreaseHealth();
+        //}
+         //if (this.health <= 0){
+            Destroy (collision.gameObject);
+        }
+    }
 }
