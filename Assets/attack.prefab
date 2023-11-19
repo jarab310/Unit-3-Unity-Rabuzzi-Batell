@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 751979451887465117}
   - component: {fileID: 6470753607863782556}
   - component: {fileID: 8552721527728465494}
+  - component: {fileID: -3394343154272875595}
   m_Layer: 0
   m_Name: attack
   m_TagString: playerAttack
@@ -143,3 +144,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a4eb0d3d23beac4680b0a1c0218005e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 3
+--- !u!50 &-3394343154272875595
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 672987539744310957}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 0.0001
+  m_LinearDrag: 0
+  m_AngularDrag: 0
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
