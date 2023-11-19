@@ -18,7 +18,8 @@ public class PlayerController : MonoBehaviour
     private string direction;
     private string prevDirection;
     private float rotAngle;
-
+    private bool swordAttack;
+    
     public int health = 2;
     public void decreaseHealth()
     {
@@ -41,10 +42,11 @@ public class PlayerController : MonoBehaviour
         Inputs();
         /*if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
         else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;*/
-        body.velocity = new Vector2(hMove * moveSpeed, body.velocity.y);
+        //body.velocity = new Vector2(hMove * moveSpeed, body.velocity.y);
         /*if (vMove < 0) gameObject.GetComponent<SpriteRenderer>().flipY = true;
         else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;*/
-        body.velocity = new Vector2(body.velocity.x, vMove * moveSpeed);
+        //body.velocity = new Vector2(body.velocity.x, vMove * moveSpeed);
+        //Movement();
 
         
     }
@@ -53,15 +55,22 @@ public class PlayerController : MonoBehaviour
     {
         Movement();
         if (swordTimer > 0) { swordTimer--; }
+        if (swordTimer == 0 && swordAttack == true)
+        {
+            Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0, 0, rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
+            swordTimer = 20;
+        }
+        swordAttack = false;
     }
 
     void Inputs()
     {
+        
         hMove = Input.GetAxisRaw("Horizontal");
 
         vMove = Input.GetAxisRaw("Vertical");
 
-        movementDirection = new Vector2(hMove, vMove).normalized;//''
+        movementDirection = new Vector2(hMove, vMove).normalized;
 
         if(direction == "r" && hMove != 1) 
         {
@@ -85,8 +94,8 @@ public class PlayerController : MonoBehaviour
         }
         else if (direction == "d" && vMove != -1) 
         {
-            if(hMove > 0) { direction="r";}
-            else if (hMove < 0) { direction="l";}
+            if (hMove < 0) { direction = "l"; }//if(hMove > 0) { direction="r";}
+            else if (hMove > 0) { direction = "r"; } //(hMove < 0) { direction="l";}
             else if (vMove > 0) { direction = "u";}
         }
         if(direction == "r") { rotAngle = 0; }
@@ -94,11 +103,13 @@ public class PlayerController : MonoBehaviour
         else if(direction == "u") { rotAngle = 90;  }
         else { rotAngle = 270; }
 
-        if (Input.GetAxis("Fire1") > 0 && swordTimer == 0)
+        if (Input.GetAxisRaw("Fire1") != 0)
         {
-            Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0,0,rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
-            swordTimer = 20;
+            swordAttack = true;
+            //Debug.Log("shmack");
         }
+        //Debug.Log(Input.GetAxisRaw("Fire1"));
+
     }
 
     void Movement()
@@ -108,19 +119,19 @@ public class PlayerController : MonoBehaviour
         {
             if(direction == "r")
             {
-                transform.eulerAngles = Vector3.forward * 0;
+                transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else if (direction == "l") 
             {
-                transform.eulerAngles = Vector3.forward * 180;
+                transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else if (direction == "d")
             {
-                transform.eulerAngles = Vector3.forward * 270;
+                transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else
             {
-                transform.eulerAngles = Vector3.forward * 90;
+                transform.eulerAngles = Vector3.forward * rotAngle;
             }
             prevDirection = direction;
         }
