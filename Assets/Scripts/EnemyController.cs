@@ -7,7 +7,7 @@ public class EnemyController : MonoBehaviour
     public int speed = 1;
     private float timePassed = 0f;
     private int direction = 1;
-
+    public int damage = 1;
     public int health = 2;
     // Update is called once per frame
     public void decreaseHealth()
@@ -33,6 +33,7 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "playerAttack")
         {
+            collision.gameObject.GetComponent<PlayerHealth>().health -= damage;
             // Destroy self
             decreaseHealth();
         }

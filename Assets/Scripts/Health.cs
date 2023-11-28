@@ -16,7 +16,8 @@ public class item1 : MonoBehaviour
         {
         if (collision.gameObject.tag == "Player")
             {
-                Destroy (gameObject);
+                 collision.gameObject.GetComponent<PlayerHealth>().health ++;
+                 Destroy (gameObject);
             }
         }      
     }

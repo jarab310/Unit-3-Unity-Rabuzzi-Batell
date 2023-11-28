@@ -682,6 +682,7 @@ GameObject:
   - component: {fileID: 1544944061}
   - component: {fileID: 1544944060}
   - component: {fileID: 1544944064}
+  - component: {fileID: 1544944065}
   m_Layer: 0
   m_Name: teehee
   m_TagString: Player
@@ -794,8 +795,22 @@ MonoBehaviour:
   sword: {fileID: 672987539744310957, guid: 017bedb4a199eb54dabd4af11455196b, type: 3}
   childSprite: {fileID: 293757950}
   attackZone: {fileID: 414428704}
-  health: 2
+  playerHealth: 0
   healthText: {fileID: 1985207381}
+--- !u!114 &1544944065
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1544944058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d65925d11b9a9ca4799c4f60d2c645da, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  health: 0
 --- !u!1 &1841036721
 GameObject:
   m_ObjectHideFlags: 0
@@ -829,6 +844,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  damage: 1
   health: 2
 --- !u!61 &1841036723
 BoxCollider2D:
@@ -1204,6 +1220,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 1
+  damage: 1
   health: 2
 --- !u!61 &2029434106
 BoxCollider2D:

@@ -21,21 +21,21 @@ public class PlayerController : MonoBehaviour
     private float rotAngle;
     private bool swordAttack;
     
-    public int health = 2;
+    public int playerHealth;
     public TextMeshProUGUI healthText;
      void SetHealthText() 
    {
-       healthText.text =  "Health: " + health.ToString();
+       healthText.text =  "Health: " + playerHealth.ToString();
    }
-    public void decreaseHealth()
+   /* public void decreaseHealth()
     {
-        health -= 1;
+        health --;
     }
     public void increaseHealth()
     {
-        health += 1;
+        health ++;
     }
-
+   */
     void Start()
     {
         body = gameObject.GetComponent<Rigidbody2D>();
@@ -44,7 +44,8 @@ public class PlayerController : MonoBehaviour
         prevDirection = "r";
         rotAngle = 0;
         SetHealthText();
-    }
+        playerHealth = gameObject.GetComponent<PlayerHealth>().health;
+        }
 
     // Update is called once per frame
     void Update()
@@ -57,8 +58,8 @@ public class PlayerController : MonoBehaviour
         else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;*/
         //body.velocity = new Vector2(body.velocity.x, vMove * moveSpeed);
         //Movement();
-
-        
+        playerHealth = gameObject.GetComponent<PlayerHealth>().health;
+        SetHealthText();
     }
 
     private void FixedUpdate()
@@ -149,7 +150,7 @@ public class PlayerController : MonoBehaviour
 
        private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "basicEnemy")
+       /* if (collision.gameObject.tag == "basicEnemy")
         {
             // Destroy self
             decreaseHealth();
@@ -162,7 +163,7 @@ public class PlayerController : MonoBehaviour
         SetHealthText();
         if (health <= 0){
            Destroy (gameObject);
-        }
+        }*/
     }
 }
     
