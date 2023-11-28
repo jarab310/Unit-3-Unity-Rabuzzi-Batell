@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -21,11 +22,19 @@ public class PlayerController : MonoBehaviour
     private bool swordAttack;
     
     public int health = 2;
+    public TextMeshProUGUI healthText;
+     void SetHealthText() 
+   {
+       healthText.text =  "Health: " + health.ToString();
+   }
     public void decreaseHealth()
     {
         health -= 1;
     }
-    
+    public void increaseHealth()
+    {
+        health += 1;
+    }
 
     void Start()
     {
@@ -34,6 +43,7 @@ public class PlayerController : MonoBehaviour
         direction = "r";
         prevDirection = "r";
         rotAngle = 0;
+        SetHealthText();
     }
 
     // Update is called once per frame
@@ -144,8 +154,15 @@ public class PlayerController : MonoBehaviour
             // Destroy self
             decreaseHealth();
         }
-         if (health <= 0){
+        else if (collision.gameObject.tag == "HealthItem")
+        {
+            // Destroy self
+            increaseHealth();
+        }
+        SetHealthText();
+        if (health <= 0){
            Destroy (gameObject);
         }
     }
 }
+    
