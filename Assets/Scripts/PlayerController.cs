@@ -22,6 +22,9 @@ public class PlayerController : MonoBehaviour
     private bool swordAttack;
     
     public int playerHealth;
+    public Animator animator;
+
+    Vector2 movement;
     public TextMeshProUGUI healthText;
      void SetHealthText() 
    {
@@ -58,6 +61,14 @@ public class PlayerController : MonoBehaviour
         else if (vMove > 0) gameObject.GetComponent<SpriteRenderer>().flipY = false;*/
         //body.velocity = new Vector2(body.velocity.x, vMove * moveSpeed);
         //Movement();
+
+        //animation
+        movement.x = Input.GetAxisRaw("Horizontal");
+        movement.y = Input.GetAxisRaw("Vertical");
+        animator.SetFloat("Horizontal", movement.x);
+        animator.SetFloat("Vertical", movement.y);
+        animator.SetFloat("Speed",movement.sqrMagnitude);
+
         playerHealth = gameObject.GetComponent<PlayerHealth>().health;
         SetHealthText();
     }
