@@ -10,16 +10,29 @@ public class EnemyController : MonoBehaviour
     public int damage = 1;
     public int health = 2;
     // Update is called once per frame
+    
+    private float movex;
+    private float movey;
+    public Animator animator;
     public void decreaseHealth()
     {
         health -= 1;
     }
     void Update()
     {
+        movex = Input.GetAxisRaw("Horizontal");
+
+        movey = Input.GetAxisRaw("Vertical");
+
         Vector2 pos = new Vector2(gameObject.transform.position.x, 
             gameObject.transform.position.y+ speed * direction * Time.deltaTime);
         gameObject.transform.position = pos;
         timePassed += Time.deltaTime;
+
+        animator.SetFloat("Speed", new Vector2(movex, movey).sqrMagnitude);
+        animator.SetFloat("Vertical",movey);
+        animator.SetFloat("Horizontal", movex);
+            
 
         if(timePassed >= 5)
         {
