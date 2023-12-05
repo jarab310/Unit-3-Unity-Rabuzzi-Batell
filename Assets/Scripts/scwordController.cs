@@ -6,15 +6,16 @@ using UnityEngine;
 public class scwordController : MonoBehaviour
 {
     // Start is called before the first frame update
-    private float timer;
+    public float timer;
     private Rigidbody2D body;
     private Vector2 movementDirection;
     public float moveSpeed;
+    public string location;
 
 
     void Start()
     {
-        timer = 5;
+        //timer = 6;
         body = gameObject.GetComponent<Rigidbody2D>();
 
     }
@@ -34,4 +35,5 @@ public class scwordController : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
 }

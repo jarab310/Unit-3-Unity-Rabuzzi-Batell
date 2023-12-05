@@ -33,7 +33,10 @@ public class EnemyController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player" || collision.gameObject.tag == "playerAttack")
         {
-            collision.gameObject.GetComponent<PlayerHealth>().health -= damage;
+            if (collision.gameObject.tag == "Player")
+            {
+                collision.gameObject.GetComponent<PlayerHealth>().health -= damage;
+            }
             // Destroy self
             decreaseHealth();
         }

@@ -65,13 +65,13 @@ public class PlayerController : MonoBehaviour
     private void FixedUpdate()
     {
         Movement();
-        if (swordTimer > 0) { swordTimer--; }
+      /*  if (swordTimer > 0) { swordTimer--; }
         if (swordTimer == 0 && swordAttack == true)
         {
             Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0, 0, rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
             swordTimer = 20;
         }
-        swordAttack = false;
+        swordAttack = false;*/
     }
 
     void Inputs()
@@ -128,22 +128,22 @@ public class PlayerController : MonoBehaviour
         body.velocity = new Vector2(movementDirection.x * moveSpeed, movementDirection.y * moveSpeed);
         if(direction != prevDirection)
         {
-            if(direction == "r")
+           /* if(direction == "r")
             {
-                transform.eulerAngles = Vector3.forward * rotAngle;
+             //   transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else if (direction == "l") 
             {
-                transform.eulerAngles = Vector3.forward * rotAngle;
+            //    transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else if (direction == "d")
             {
-                transform.eulerAngles = Vector3.forward * rotAngle;
+             //   transform.eulerAngles = Vector3.forward * rotAngle;
             }
             else
             {
-                transform.eulerAngles = Vector3.forward * rotAngle;
-            }
+               // transform.eulerAngles = Vector3.forward * rotAngle;
+            }*/
             prevDirection = direction;
         }
     }
