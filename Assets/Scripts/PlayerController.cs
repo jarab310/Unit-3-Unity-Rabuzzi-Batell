@@ -11,6 +11,9 @@ public class PlayerController : MonoBehaviour
     //public float vSpeed;
     private float hMove;
     private float vMove;
+    public Animator animator;
+
+
     public GameObject sword;
     private float swordTimer;
     private Vector2 movementDirection;
@@ -22,7 +25,7 @@ public class PlayerController : MonoBehaviour
     private bool swordAttack;
     
     public int playerHealth;
-    public Animator animator;
+    //public Animator animator;
 
     Vector2 movement;
     public TextMeshProUGUI healthText;
@@ -54,6 +57,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         Inputs();
+        
         /*if (hMove < 0) gameObject.GetComponent<SpriteRenderer>().flipX = true;
         else if (hMove > 0) gameObject.GetComponent<SpriteRenderer>().flipX = false;*/
         //body.velocity = new Vector2(hMove * moveSpeed, body.velocity.y);
@@ -63,11 +67,11 @@ public class PlayerController : MonoBehaviour
         //Movement();
 
         //animation
-        movement.x = Input.GetAxisRaw("Horizontal");
+       /* movement.x = Input.GetAxisRaw("Horizontal");
         movement.y = Input.GetAxisRaw("Vertical");
         animator.SetFloat("Horizontal", movement.x);
         animator.SetFloat("Vertical", movement.y);
-        animator.SetFloat("Speed",movement.sqrMagnitude);
+        animator.SetFloat("Speed",movement.sqrMagnitude);*/
 
         playerHealth = gameObject.GetComponent<PlayerHealth>().health;
         SetHealthText();
@@ -93,8 +97,15 @@ public class PlayerController : MonoBehaviour
         vMove = Input.GetAxisRaw("Vertical");
 
         movementDirection = new Vector2(hMove, vMove).normalized;
+        
+        animator.SetFloat("Speed", new Vector2(hMove, vMove).sqrMagnitude);
+        if (new Vector2(hMove, vMove).sqrMagnitude != 0)
+        {
+            animator.SetFloat("Horizontal", hMove);
+            animator.SetFloat("Vertical", vMove);
+        }
 
-        if(direction == "r" && hMove != 1) 
+        if (direction == "r" && hMove != 1) 
         {
             
             if(vMove < 0) { direction="d";}

@@ -17,8 +17,8 @@ public class attackController : MonoBehaviour
     void Start()
     {
         swordTimer = 0;
-        direction = "r";
-        prevDirection = "r";
+        direction = "d";
+        prevDirection = "d";
         rotAngle = 0;
     }
 
@@ -34,7 +34,7 @@ public class attackController : MonoBehaviour
         if (swordTimer > 0) { swordTimer--; }
         if (swordTimer == 0 && swordAttack == true)
         {
-            Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0, 0, rotAngle));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
+            Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0, 0, rotAngle -90));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
             swordTimer = 20;
         }
         swordAttack = false;
@@ -75,10 +75,10 @@ public class attackController : MonoBehaviour
             else if (hMove > 0) { direction = "r"; } //(hMove < 0) { direction="l";}
             else if (vMove > 0) { direction = "u"; }
         }
-        if (direction == "r") { rotAngle = 0; }
-        else if (direction == "l") { rotAngle = 180; }
-        else if (direction == "u") { rotAngle = 90; }
-        else { rotAngle = 270; }
+        if (direction == "r") { rotAngle = 90; }
+        else if (direction == "l") { rotAngle = 270; }
+        else if (direction == "u") { rotAngle = 180; }
+        else { rotAngle = 0; }
 
         if (Input.GetAxisRaw("Fire1") != 0)
         {
