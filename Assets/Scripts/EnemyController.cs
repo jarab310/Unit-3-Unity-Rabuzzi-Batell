@@ -20,21 +20,24 @@ public class EnemyController : MonoBehaviour
     }
     void Update()
     {
-        movex = Input.GetAxisRaw("Horizontal");
+        /* movex = Input.GetAxisRaw("Horizontal");
 
-        movey = Input.GetAxisRaw("Vertical");
+         movey = Input.GetAxisRaw("Vertical");*/
 
-        Vector2 pos = new Vector2(gameObject.transform.position.x, 
-            gameObject.transform.position.y+ speed * direction * Time.deltaTime);
-        gameObject.transform.position = pos;
-        timePassed += Time.deltaTime;
+         Vector2 pos = new Vector2(gameObject.transform.position.x, 
+             gameObject.transform.position.y+ speed * direction * Time.deltaTime);
+         gameObject.transform.position = pos;
+         timePassed += Time.deltaTime;
+        
+        /* animator.SetFloat("Speed", new Vector2(movex, movey).sqrMagnitude);
+         animator.SetFloat("Vertical",movey);
+         animator.SetFloat("Horizontal", movex);*/
 
-        animator.SetFloat("Speed", new Vector2(movex, movey).sqrMagnitude);
-        animator.SetFloat("Vertical",movey);
-        animator.SetFloat("Horizontal", movex);
-            
+        animator.SetFloat("Vertical", direction);
+        animator.SetFloat("Speed", 1);
+        //animator.SetFloat("Horizontal", 0);
 
-        if(timePassed >= 5)
+        if (timePassed >= 5)
         {
             direction = direction * -1;
             timePassed = 0;
