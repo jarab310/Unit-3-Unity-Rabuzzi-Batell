@@ -7,6 +7,8 @@ public class PlayerHealth : MonoBehaviour
     // Start is called before the first frame update
     public int maxHealth;
     public int health;
+    public audioManagement audioManager;
+
     void Start()
     {
         health = maxHealth;
@@ -15,6 +17,10 @@ public class PlayerHealth : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (health <= 0) { Destroy(gameObject); }
+        if (health <= 0) 
+        {
+            audioManager.PlaySound(audioManager.playerDeath);
+            Destroy(gameObject); 
+        }
     }
 }

@@ -398,7 +398,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: -0.032819033}
@@ -795,6 +795,7 @@ MonoBehaviour:
   withIntro: {fileID: 8300000, guid: e2a40e0c5e6684145ac3385ad0b82f1a, type: 3}
   noIntro: {fileID: 8300000, guid: 78f3757ae1663c44eb169e2f5e021408, type: 3}
   sword: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
+  playerDeath: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
 --- !u!1 &508612389
 GameObject:
   m_ObjectHideFlags: 0
@@ -34205,12 +34206,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1544944063}
   - component: {fileID: 1544944061}
+  - component: {fileID: 1544944068}
   - component: {fileID: 1544944060}
   - component: {fileID: 1544944064}
   - component: {fileID: 1544944065}
   - component: {fileID: 1544944067}
   - component: {fileID: 1544944066}
-  - component: {fileID: 1544944068}
   m_Layer: 0
   m_Name: teehee
   m_TagString: Player
@@ -34339,6 +34340,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 0
+  audioManager: {fileID: 505335754}
 --- !u!212 &1544944066
 SpriteRenderer:
   m_ObjectHideFlags: 0

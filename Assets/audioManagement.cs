@@ -14,6 +14,7 @@ public class audioManagement : MonoBehaviour
     public AudioClip withIntro;
     public AudioClip noIntro;
     public AudioClip sword;
+    public AudioClip playerDeath;
 
 
     private void Start()
