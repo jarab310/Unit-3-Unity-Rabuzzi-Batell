@@ -31,8 +31,8 @@ public class audioManagement : MonoBehaviour
         music.PlayScheduled(withIntro.length);*/
     }
     // Update is called once per frame
-    void Update()
+    public void PlaySound(AudioClip clip)
     {
-        
+        sounds.PlayOneShot(clip);
     }
 }

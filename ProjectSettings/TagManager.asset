@@ -6,6 +6,7 @@ TagManager:
   tags:
   - playerAttack
   - basicEnemy
+  - audio
   layers:
   - Default
   - TransparentFX
