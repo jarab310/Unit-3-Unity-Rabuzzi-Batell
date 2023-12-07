@@ -14,6 +14,8 @@ public class attackController : MonoBehaviour
     private string prevDirection;
     public float rotAngle;
     private bool swordAttack;
+    public audioManagement audioManager;
+
     void Start()
     {
         swordTimer = 0;
@@ -34,6 +36,7 @@ public class attackController : MonoBehaviour
         if (swordTimer > 0) { swordTimer--; }
         if (swordTimer == 0 && swordAttack == true)
         {
+            audioManager.PlaySound(audioManager.sword);
             Instantiate(sword, attackZone.transform.position, Quaternion.Euler(0, 0, rotAngle-90));//gameObject.transform.rotation.eulerAngles);//Quaternion.identity);
             swordTimer = 20;
         }

@@ -404,7 +404,7 @@ MonoBehaviour:
 
     Move: WASD or Arrows
 
-    Slash: J or Space'
+    Slash: Z or Space'
 --- !u!222 &242114417
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -11,12 +11,14 @@ public class scwordController : MonoBehaviour
     private Vector2 movementDirection;
     public float moveSpeed;
     public string location;
+    audioManagement audioManager;
 
 
     void Start()
     {
         //timer = 6;
         body = gameObject.GetComponent<Rigidbody2D>();
+        audioManager.PlaySound(audioManager.sword);
 
     }
 

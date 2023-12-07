@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
     private int direction = 1;
     public int damage = 1;
     public int health = 2;
+    public GameObject drop;
     // Update is called once per frame
     
     private float movex;
@@ -57,8 +58,14 @@ public class EnemyController : MonoBehaviour
             decreaseHealth();
         }
          if (health <= 0){
+            if(Random.Range(0f, 3f) <= 1.4f)
+            {
+                Instantiate(drop, gameObject.transform.position, Quaternion.identity);
+            }
             Destroy (gameObject);
         }
     }
+
+    // private 
         
 }
