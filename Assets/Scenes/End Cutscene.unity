@@ -4417,8 +4417,8 @@ MonoBehaviour:
   - {fileID: 913950866}
   - {fileID: 1575949703}
   sounds: {fileID: 139090275}
-  withIntro: {fileID: 8300000, guid: 1b33836df847ace4e828b76d8a60897e, type: 3}
-  noIntro: {fileID: 8300000, guid: a75083db3eab908409d31a104f8d274f, type: 3}
+  withIntro: {fileID: 8300000, guid: f3ce027795c676b47aa6449a9186b8c0, type: 3}
+  noIntro: {fileID: 8300000, guid: f3ce027795c676b47aa6449a9186b8c0, type: 3}
   sword: {fileID: 8300000, guid: fe0b1f9aeb45b41b089175aeeabd5d95, type: 3}
   playerDeath: {fileID: 8300000, guid: b99da9a57308d4ba1bee1cf1d9038376, type: 3}
 --- !u!4 &723933806
@@ -4846,7 +4846,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1433226384
 Transform:
   m_ObjectHideFlags: 0
@@ -5336,14 +5336,14 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1544944058}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
   m_LocalPosition: {x: -4.79, y: 0.45, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1433226384}
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!114 &1544944064
 MonoBehaviour:
   m_ObjectHideFlags: 0
