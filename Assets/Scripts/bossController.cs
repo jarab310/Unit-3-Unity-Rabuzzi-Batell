@@ -30,11 +30,11 @@ public class bossController : MonoBehaviour
     // Update is called once per frame
     void FixedUpdate()
     {
-        if (moveTimer > 0)
+        /*if (moveTimer > 0)
         {
             moveTimer--;
         }
-        else if (attackTimer > 0)
+        else */if (attackTimer > 0)
         {
             attackTimer--;
             if(direction == 0)
@@ -98,8 +98,8 @@ public class bossController : MonoBehaviour
         }
 
         attackTimer = 75;
-        moveTimer = 75;
-            turnCounter++;
+        //moveTimer = 75;
+        turnCounter++;
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

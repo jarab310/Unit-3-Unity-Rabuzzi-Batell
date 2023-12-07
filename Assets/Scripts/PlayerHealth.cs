@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class PlayerHealth : MonoBehaviour
         if (health <= 0) 
         {
             audioManager.PlaySound(audioManager.playerDeath);
-            Destroy(gameObject); 
+            SceneManager.LoadScene(0);
         }
     }
 }
