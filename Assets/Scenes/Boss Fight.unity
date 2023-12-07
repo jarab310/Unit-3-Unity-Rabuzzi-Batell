@@ -4650,7 +4650,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealth: 5
   health: 0
-  audioManager: {fileID: 0}
+  audioManager: {fileID: 723933805}
 --- !u!212 &1544944066
 SpriteRenderer:
   m_ObjectHideFlags: 0
