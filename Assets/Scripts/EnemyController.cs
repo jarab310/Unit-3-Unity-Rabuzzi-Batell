@@ -15,10 +15,7 @@ public class EnemyController : MonoBehaviour
     private float movex;
     private float movey;
     public Animator animator;
-    public void decreaseHealth()
-    {
-        health -= 1;
-    }
+    
     void Update()
     {
         /* movex = Input.GetAxisRaw("Horizontal");
@@ -66,6 +63,12 @@ public class EnemyController : MonoBehaviour
         }
     }
 
+    private void decreaseHealth()
+    {
+        health --;
+        if(health <= 0) Destroy (gameObject);
+    }
+
     // private 
-        
+
 }
