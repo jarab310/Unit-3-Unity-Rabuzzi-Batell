@@ -16,7 +16,10 @@ public class item1 : MonoBehaviour
         {
         if (collision.gameObject.tag == "Player")
             {
-                 collision.gameObject.GetComponent<PlayerHealth>().health += 1;
+                if (collision.gameObject.GetComponent<PlayerHealth>().health < collision.gameObject.GetComponent<PlayerHealth>().maxHealth)
+                {
+                    collision.gameObject.GetComponent<PlayerHealth>().health += 1;
+                }
                  Destroy (gameObject);
             }
         }      
