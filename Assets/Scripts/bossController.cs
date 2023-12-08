@@ -25,7 +25,8 @@ public class bossController : MonoBehaviour
 
     void Start()
     {
-        animator.SetFloat("Vertical", 0);
+        animator.SetFloat("Vertical", 1);
+        animator.SetFloat("Horizontal", 0);
     }
 
     // Update is called once per frame
